@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>
-      <a href="register.html">注册页</a>
+      <a href="register.html?a=11">注册页</a>
     </p>
     <hr>
     <p>
@@ -11,6 +11,11 @@
 </template>
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  methods: {
+    jump () {
+      window.location.href = `login.html?a=${this.a}&b=${this.b}`
+    }
+  }
 }
 </script>

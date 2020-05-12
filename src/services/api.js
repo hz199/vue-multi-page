@@ -2,7 +2,7 @@ import axios from '../utils/axios'
 // import Qs from 'qs'
 
 export const login = function (payload) {
-  return axios.get('/api/login', {
+  return axios.get('/api/home', {
     params: payload
   })
 }

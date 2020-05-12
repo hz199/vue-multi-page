@@ -1,5 +1,5 @@
 
-const devApiUrl = 'http://192.168.1.43:8085'
+const devApiUrl = 'https://www.fastmock.site/mock/d0f2daa2f0f6b981661fc60e0a1c02d8'
 //正式环境变量,注意修改
 const proApiUrl = ''
 
