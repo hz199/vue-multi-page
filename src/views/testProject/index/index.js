@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './Index.vue'
-import '../common'
+import '../../common'
 
 Vue.config.productionTip = false
 

@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import * as apiServices from '../../services/api'
+import * as apiServices from '@/services/api'
 
 export default {
   name: 'Login',
