@@ -18,7 +18,7 @@ function getNpmConfigArgv() {
     if (!fileName) {
         throw new Error('请先配置 --file=  参数')
     } else {
-        fileName = fileName.replace(/-/g, '').split('=')[1]
+        fileName = fileName.replace(/--file=/g, '')
     }
 
     npmConfig['fileName'] = fileName
