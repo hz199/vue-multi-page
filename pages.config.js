@@ -22,7 +22,6 @@ function getNpmConfigArgv() {
     }
 
     npmConfig['fileName'] = fileName
-    // console.log(fileName, 111)
 }
 
 getNpmConfigArgv()

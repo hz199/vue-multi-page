@@ -10,10 +10,17 @@ module.exports = {
   productionSourceMap: false,
   parallel: undefined,
   pages: pages,
-  // chainWebpack: (config) => {
-  
-  // },
-  // configureWebpack: () => {
-    
+  // devServer: {
+  //   proxy: {
+  //     '/api': {
+  //       target: '<url>',
+  //     },
+  //   }
   // }
+  // chainWebpack: (config) => {
+
+    // },
+    // configureWebpack: () => {
+
+    // }
 }

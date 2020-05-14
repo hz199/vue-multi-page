@@ -1,8 +1,15 @@
 import axios from '../utils/axios'
 // import Qs from 'qs'
 
-export const login = function (payload) {
-  return axios.get('/api/home', {
+export const login = function (id, payload) {
+  return axios.get(`/api/home/${id}`, {
+    params: payload
+  })
+}
+
+
+export const getTableList = function (payload = {}) {
+  return axios.get(`/api/table1`, {
     params: payload
   })
 }

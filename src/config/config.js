@@ -1,7 +1,7 @@
 
 const devApiUrl = 'https://www.fastmock.site/mock/d0f2daa2f0f6b981661fc60e0a1c02d8'
 //正式环境变量,注意修改
-const proApiUrl = ''
+const proApiUrl = 'https://www.fastmock.site/mock/d0f2daa2f0f6b981661fc60e0a1c02d8'
 
 const isDev = process.env.NODE_ENV === 'development'
 

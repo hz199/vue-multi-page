@@ -1,24 +1,56 @@
 <template>
   <div>
-    login
+    <van-list
+      v-model="vantListLoading"
+      :finished="vantListFinished"
+      finished-text="没有更多了"
+      @load="getTableList"
+    >
+      <van-cell v-for="item in listData" :key="item.key" :title="item.county" />
+    </van-list>
   </div>
 </template>
 <script>
-import * as apiServices from '@/services/api'
+import * as apiServices from "@/services/api";
+import { List, Cell } from "vant";
 
 export default {
-  name: 'Login',
-  methods: {
-    login () {
-      apiServices.login().then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
-    }
+  name: "Login",
+  data() {
+    return {
+      listData: [],
+      vantListFinished: false,
+      vantListLoading: false
+    };
   },
-  mounted () {
-    this.login()
+  components: {
+    [List.name]: List,
+    [Cell.name]: Cell
+  },
+
+  methods: {
+    getTableList() {
+      this.vantListLoading = true;
+      apiServices
+        .getTableList().then(res => {
+          if (res.code === 0) {
+            this.listData = this.listData.concat(res.data.list);
+            this.vantListLoading = false;
+
+
+            // 添加终止 加载动作
+            if (this.listData.length > 100) {
+              this.vantListFinished = true
+            }
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
-}
+  // mounted() {
+  //   this.getTableList();
+  // }
+};
 </script>
