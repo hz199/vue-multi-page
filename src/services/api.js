@@ -14,6 +14,12 @@ export const getTableList = function (payload = {}) {
   })
 }
 
+export const getTableList2 = function (payload = {}) {
+  return axios.get(`/api/table2`, {
+    params: payload
+  })
+}
+
 // post 请求 axios 默认传的是json类型 
 // export const login = function (payload) {
 //   return axios.post('/api/login', payload)
