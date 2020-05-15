@@ -1,97 +1,35 @@
 <template>
   <div class="home">
-    <van-tabs 
-      :line-width="0"
-      :animated="true"
-       v-model="tabsActive">
+    <van-tabs :line-width="0" :animated="true" v-model="tabsActive">
       <van-tab title="标签 1">
-        <van-list
-          v-model="vantListLoading"
-          :finished="vantListFinished"
-          finished-text="没有更多了"
-          @load="getTableList"
-        >
-          <van-cell v-for="item in listData" :key="item.key" :title="item.county" />
-        </van-list>
+        <Item1></Item1>
       </van-tab>
-      <van-tab title="标签 2">
-        <van-list
-          v-model="vantListLoading2"
-          :finished="vantListFinished2"
-          finished-text="没有更多了"
-          @load="getTableList2"
-        >
-          <van-cell v-for="item in listData2" :key="item.key" :title="item.nameEN" />
-        </van-list>
+      <van-tab title>
+        <Item2></Item2>
       </van-tab>
     </van-tabs>
   </div>
 </template>
 <script>
-import * as apiServices from "@/services/api";
-import { List, Cell, Tab, Tabs } from "vant";
+import { Tab, Tabs } from 'vant'
+import Item1 from './item1'
+import Item2 from './item2'
 
 export default {
   name: "Login",
+  components: {
+    [Tab.name]: Tab,
+    [Tabs.name]: Tabs,
+    Item1,
+    Item2
+  },
   data() {
     return {
-      tabsActive: 0,
-      status: 1,
-      listData: [],
-      vantListFinished: false,
-      vantListLoading: false,
-      listData2: [],
-      vantListFinished2: false,
-      vantListLoading2: false
+      tabsActive: 0
     };
   },
-  components: {
-    [List.name]: List,
-    [Cell.name]: Cell,
-    [Tab.name]: Tab,
-    [Tabs.name]: Tabs
-  },
 
-  methods: {
-    getTableList() {
-      this.vantListLoading = true;
-      apiServices
-        .getTableList().then(res => {
-          if (res.code === 0) {
-            this.listData = this.listData.concat(res.data.list);
-            this.vantListLoading = false;
-
-
-            // 添加终止 加载动作
-            if (this.listData.length > 100) {
-              this.vantListFinished = true
-            }
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-    getTableList2() {
-      this.vantListLoading2 = true;
-      apiServices
-        .getTableList2().then(res => {
-          if (res.code === 0) {
-            this.listData2 = this.listData2.concat(res.data.list);
-            this.vantListLoading2 = false;
-
-
-            // 添加终止 加载动作
-            if (this.listData.length > 100) {
-              this.vantListFinished2 = true
-            }
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  }
+  methods: {}
   // mounted() {
   //   this.getTableList();
   // }
@@ -100,9 +38,19 @@ export default {
 
 <style>
 .home .van-tab:nth-child(1) {
-  background: red;
+  background: url("../../../assets/1.png");
+  background-size: 100% 100%;
 }
 .home .van-tab:nth-child(2) {
-  background: blue;
+  background: url("../../../assets/2.png");
+  background-size: 100% 100%;
+}
+.home .van-tab:nth-child(1).van-tab--active {
+  background: url("../../../assets/1_active.png") no-repeat;
+  background-size: 100% 100%;
+}
+.home .van-tab:nth-child(2).van-tab--active {
+  background: url("../../../assets/2_active.png") no-repeat;
+  background-size: 100% 100%;
 }
 </style>
