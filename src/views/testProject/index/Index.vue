@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="index">
     <p>
       <a href="register.html?a=11">注册页</a>
     </p>
